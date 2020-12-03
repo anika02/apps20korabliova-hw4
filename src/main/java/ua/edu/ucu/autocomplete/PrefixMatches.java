@@ -10,6 +10,7 @@ import ua.edu.ucu.tries.Tuple;
 public class PrefixMatches {
 
     private final Trie trie;
+    private static final int MIN_LEN = 3;
 
     public PrefixMatches(Trie trie) {
         this.trie = trie;
@@ -48,12 +49,7 @@ public class PrefixMatches {
 
     public Iterable<String> wordsWithPrefix(String pref, int k) {
         illegalArgExc(pref);
-        int len;
-        if (pref.length() == 2) {
-            len = 3;
-        } else {
-            len = pref.length();
-        }
+        int len = Math.max(pref.length(), MIN_LEN);
         Queue chosenWords = new Queue();
         for (String word : trie.wordsWithPrefix(pref)) {
             if ((2 < word.length()) && (word.length() < len + k)) {

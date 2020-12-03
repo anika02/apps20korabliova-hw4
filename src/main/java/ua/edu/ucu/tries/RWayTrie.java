@@ -52,18 +52,21 @@ public class RWayTrie implements Trie {
         return size;
     }
 
-    // -------------------------- method from book --------------------------
+    // ------------------ method from book with some changes ------------------
     private Node put(Node x, Tuple t, int d) {
+        Node temp;
         if (x == null) {
-            x = new Node();
+            temp = new Node();
+        } else {
+            temp = x;
         }
         if (d == t.term.length()) {
-            x.value = t.weight;
-            return x;
+            temp.value = t.weight;
+            return temp;
         }
         char c = t.term.charAt(d);
-        x.next[c - INDEX_START] = put(x.next[c - INDEX_START], t, d + 1);
-        return x;
+        temp.next[c - INDEX_START] = put(temp.next[c - INDEX_START], t, d + 1);
+        return temp;
     }
 
     private Node get(Node x, String key, int d) {
@@ -82,12 +85,14 @@ public class RWayTrie implements Trie {
             x.value = null;
         } else {
             char c = key.charAt(d);
-            x.next[c - INDEX_START] = delete(x.next[c - INDEX_START], key, d + 1);
+            x.next[c - INDEX_START] = delete(
+                    x.next[c - INDEX_START], key, d + 1);
         }
-        for (char c = 0; c < R; c++)
+        for (char c = 0; c < R; c++) {
             if (x.next[c] != null) {
                 return x;
             }
+        }
         return null;
     }
 
