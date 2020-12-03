@@ -9,8 +9,8 @@ import ua.edu.ucu.tries.Tuple;
  */
 public class PrefixMatches {
 
-    private final Trie trie;
     private static final int MIN_LEN = 3;
+    private final Trie trie;
 
     public PrefixMatches(Trie trie) {
         this.trie = trie;

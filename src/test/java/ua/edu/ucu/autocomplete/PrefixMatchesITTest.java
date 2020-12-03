@@ -25,7 +25,9 @@ public class PrefixMatchesITTest {
 
     @Test
     public void testLoad() {
-        assertEquals(8, pm.load("hello world", "alphabet"));
+        pm.load("a aa aaa", "b bb bbb", "ab");
+        assertEquals(7, pm.size());
+        assertEquals(10, pm.load("hello world", "alphabet"));
     }
 
     @Test
@@ -80,6 +82,7 @@ public class PrefixMatchesITTest {
         String pref = "ab";
         int k = 1;
 
+        pm.load("ab");
         Iterable<String> result = pm.wordsWithPrefix(pref, k);
 
         String[] expResult = {"abc"};
