@@ -17,7 +17,8 @@ public class PrefixMatches {
 
     private void illegalArgExc(String pref) {
         if (pref.length() < 2) {
-            throw new IllegalArgumentException("length of prefix must be more than 1");
+            throw new IllegalArgumentException(
+                    "length of prefix must be more than 1");
         }
     }
 
@@ -47,7 +48,12 @@ public class PrefixMatches {
 
     public Iterable<String> wordsWithPrefix(String pref, int k) {
         illegalArgExc(pref);
-        int len = (pref.length() == 2) ? 3 : pref.length();
+        int len;
+        if (pref.length() == 2) {
+            len = 3;
+        } else {
+            len = pref.length();
+        }
         Queue chosenWords = new Queue();
         for (String word : trie.wordsWithPrefix(pref)) {
             if ((2 < word.length()) && (word.length() < len + k)) {

@@ -24,6 +24,11 @@ public class PrefixMatchesITTest {
     }
 
     @Test
+    public void testLoad() {
+        assertEquals(8, pm.load("hello world", "alphabet"));
+    }
+
+    @Test
     public void testContains() {
         pm.delete("abc");
 
@@ -37,7 +42,8 @@ public class PrefixMatchesITTest {
     @Test
     public void testDelete() {
         String pref = "ab";
-        pm.delete("abc");
+        assertTrue(pm.delete("abc"));
+        assertFalse(pm.delete("abc"));
 
         Iterable<String> result = pm.wordsWithPrefix(pref);
         String[] expResult = {"abce", "abcd", "abcde", "abcdef"};
@@ -65,6 +71,18 @@ public class PrefixMatchesITTest {
         Iterable<String> result = pm.wordsWithPrefix(pref, k);
 
         String[] expResult = {"abc", "abce", "abcd", "abcde"};
+
+        assertThat(result, containsInAnyOrder(expResult));
+    }
+
+    @Test
+    public void testWordsWithPrefix_String_and_K_One() {
+        String pref = "ab";
+        int k = 1;
+
+        Iterable<String> result = pm.wordsWithPrefix(pref, k);
+
+        String[] expResult = {"abc"};
 
         assertThat(result, containsInAnyOrder(expResult));
     }

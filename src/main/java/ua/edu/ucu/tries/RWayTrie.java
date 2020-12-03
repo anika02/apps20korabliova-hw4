@@ -78,17 +78,11 @@ public class RWayTrie implements Trie {
     }
 
     private Node delete(Node x, String key, int d) {
-        if (x == null) {
-            return null;
-        }
         if (d == key.length()) {
             x.value = null;
         } else {
             char c = key.charAt(d);
             x.next[c - INDEX_START] = delete(x.next[c - INDEX_START], key, d + 1);
-        }
-        if (x.value != null) {
-            return x;
         }
         for (char c = 0; c < R; c++)
             if (x.next[c] != null) {

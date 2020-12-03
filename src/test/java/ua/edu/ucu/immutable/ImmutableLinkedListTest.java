@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class ImmutableLinkedListTest {
 
-//--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     @Test
     public void testImmutableLinkedListEmpty() {
         ImmutableLinkedList linkedList = new ImmutableLinkedList();
@@ -28,7 +28,7 @@ public class ImmutableLinkedListTest {
         assertEquals(expSize, actualSize, 0.00001);
     }
 
-//--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
     @Test
     public void testAddFirstGetFirstSize() {
         Integer[] elements = {3, -5};
@@ -58,6 +58,7 @@ public class ImmutableLinkedListTest {
         int actualSize = linkedList.size();
         assertEquals(expSize, actualSize, 0.00001);
     }
+
     @Test
     public void testGetFirstEmpty() {
         ImmutableLinkedList linkedList = new ImmutableLinkedList();
@@ -95,7 +96,7 @@ public class ImmutableLinkedListTest {
         assertEquals(expSize, actualSize, 0.00001);
     }
 
-//----------------------------------------------------------------------
+    //----------------------------------------------------------------------
     @Test
     public void testAdd() {
         Integer[] elements = {3, -5};
@@ -148,7 +149,7 @@ public class ImmutableLinkedListTest {
         assertEquals(expResult[3], actualResult[3]);
     }
 
-//---------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------
     @Test
     public void testRemoveGet() {
         Integer[] elements = {3, 7, 9, 4};
@@ -182,7 +183,7 @@ public class ImmutableLinkedListTest {
         assertEquals(-1, linkedList.indexOf(0));
     }
 
-//---------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------
     @Test
     public void testClear() {
         Integer[] elements = {3, 7, 9, 4};
@@ -211,7 +212,7 @@ public class ImmutableLinkedListTest {
         assertEquals(expResult, actualResult);
     }
 
-//---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
     @Test(expected = IndexOutOfBoundsException.class)
     public void testIndexErrorAddLess() {
         Integer[] elements = {3, 7, 9, 4};
@@ -240,7 +241,7 @@ public class ImmutableLinkedListTest {
         linkedList.remove(linkedList.size());
     }
 
-//---------------------------------------------------------------------------
+    //---------------------------------------------------------------------------
     @Test
     public void testImmutable() {
         Integer[] elements = {3, 7, 9};
