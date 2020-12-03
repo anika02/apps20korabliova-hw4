@@ -15,8 +15,10 @@ public class RWayTrie implements Trie {
 
     @Override
     public void add(Tuple t) {
-        root = put(root, t, 0);
-        ++size;
+        if (!contains(t.term)) {
+            root = put(root, t, 0);
+            ++size;
+        }
     }
 
     @Override

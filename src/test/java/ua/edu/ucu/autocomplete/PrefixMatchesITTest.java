@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.stringContainsInOrder;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -80,14 +81,19 @@ public class PrefixMatchesITTest {
     @Test
     public void testWordsWithPrefix_String_and_K_One() {
         String pref = "ab";
-        int k = 1;
 
         pm.load("ab");
-        Iterable<String> result = pm.wordsWithPrefix(pref, k);
+        Iterable<String> resultLess = pm.wordsWithPrefix(pref, 1);
 
-        String[] expResult = {"abc"};
+        String[] expResultLess = {"abc"};
 
-        assertThat(result, containsInAnyOrder(expResult));
+        assertThat(resultLess, containsInAnyOrder(expResultLess));
+
+        Iterable<String> resultMore = pm.wordsWithPrefix(pref, 5);
+
+        String[] expResultMore = {"abc", "abce", "abcd", "abcde", "abcdef"};
+
+        assertThat(resultMore, containsInAnyOrder(expResultMore));
     }
 
     @Test

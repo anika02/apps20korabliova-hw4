@@ -29,6 +29,14 @@ public class RWayTrieTest {
         assertEquals(10, trie.size());
     }
 
+    @Test
+    public void testAddRepeated() {
+        assertTrue(trie.contains("show"));
+        assertEquals(9, trie.size());
+        String word = "show";
+        trie.add(new Tuple(word, word.length()));
+        assertEquals(9, trie.size());
+    }
 
     @Test
     public void testWords() {

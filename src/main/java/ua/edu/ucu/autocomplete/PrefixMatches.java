@@ -52,7 +52,7 @@ public class PrefixMatches {
         int len = Math.max(pref.length(), MIN_LEN);
         Queue chosenWords = new Queue();
         for (String word : trie.wordsWithPrefix(pref)) {
-            if ((2 < word.length()) && (word.length() < len + k)) {
+            if ((word.length() > 2) && (word.length() < len + k)) {
                 chosenWords.enqueue(word);
             }
         }
